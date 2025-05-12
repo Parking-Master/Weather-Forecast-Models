@@ -2,7 +2,61 @@
 const tf = require("@tensorflow/tfjs");
 const cliColor = require("cli-color");
 
+const methods = require("./Merlin/methods");
+const debate = require("./Merlin/debate");
+const normalizer = require("./Merlin/normalizer");
+
 async function predict12(weatherData) {
+  /*
+   * Model version: 12.0
+   * Model name: Dumbledore
+   * Model accuracy: ~80%
+   * Prediction span: 1 week
+   * Input span: 2 years
+   * Input structure: 1 array/732 objects/16 properties
+   * Input properties: 
+   * - date (mm-dd-yyyy)
+   * - high temperature (F)
+   * - low temperature (F)
+   * - high humidity (%)
+   * - low humidity (%)
+   * - high pressure (inHg)
+   * - low pressure (inHg)
+   * - high wind speed (mph)
+   * - low wind speed (mph)
+   * - high dew point (F)
+   * - low dew point (F)
+   * - total precipitation (inches)
+   * - most frequent cloud cover (oktas)
+   * - day of the year (1-366)
+   * - month of the year (1-12)
+   * - season (0-3)
+   * 
+   * Output properties:
+   * - date (mm-dd-yyyy)
+   * - high temperature (F)
+   * - low temperature (F)
+   * - high humidity (%)
+   * - low humidity (%)
+   * - high pressure (inHg)
+   * - low pressure (inHg)
+   * - high wind speed (mph)
+   * - low wind speed (mph)
+   * - high dew point (F)
+   * - low dew point (F)
+   * - total precipitation (inches)
+   * - most frequent cloud cover (oktas)
+   * - day of the year (1-366)
+   * - month of the year (1-12)
+   * - season (0-3)
+   * - chance of rain (%)
+   * 
+   * Final estimated prediction time (for my 2015 8GB RAM macbook): 55 minutes
+   * Notes:
+   * > Uses input data from 2 years ago to today.
+   * > Also uses Rain Prediction Model 2.0 for chance of rain predictions.
+  */
+  
   const outputDays = 10;
   const epochs = 20;
 
