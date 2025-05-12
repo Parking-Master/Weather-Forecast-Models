@@ -1,6 +1,8 @@
 // Require modules here
 const tf = require("@tensorflow/tfjs");
 
+const normalizer = require("./Merlin/normalizer");
+
 async function predict10(passedWeatherData) {
   // This prediction model version (10.0) uses 30 days of
   // previous weather data to recognize patterns over a
